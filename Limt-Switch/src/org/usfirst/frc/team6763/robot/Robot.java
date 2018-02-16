@@ -29,10 +29,8 @@ public class Robot extends IterativeRobot {
 	
 	DigitalInput topSwitch = new DigitalInput(6);
 	DigitalInput bottomSwitch = new DigitalInput(7);
-	Spark climber = new Spark(7);
+	Spark elevator = new Spark(7);
 	Joystick stick = new Joystick(0);
-	
-	int mode = 1;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -88,16 +86,16 @@ public class Robot extends IterativeRobot {
 		System.out.println(topSwitch.get());
 		
 		if(topSwitch.get() && !bottomSwitch.get() && -stick.getY() < 0) {
-			climber.set(-stick.getY());
+			elevator.set(-stick.getY());
 		}
 		else if(bottomSwitch.get() && !topSwitch.get() && -stick.getY() > 0) {
-			climber.set(-stick.getY());
+			elevator.set(-stick.getY());
 		}
 		else if(!topSwitch.get() && !bottomSwitch.get()) {
-			climber.set(-stick.getY());
+			elevator.set(-stick.getY());
 		}
 		else {
-			climber.set(0.0);
+			elevator.set(0.0);
 		}
 	}
 
